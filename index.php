@@ -1,33 +1,16 @@
 <?php
 
-$image = "copains.jpg";
-
-$formulaire = [
-    ['nom' => 'Dupont', 'prenom' => 'Jean', 'email'=> 'jdupont@gmail'],
-    ['nom' => 'Dupuis', 'prenom' => 'Loïc', 'email'=> 'loic45000@gmail'],
-    ['nom' => 'Armand', 'prenom' => 'Edgard', 'email'=> 'armand-e@gmail'],
-    ['nom' => 'Durand', 'prenom' => 'Emilie', 'email'=> 'emiliedurand@gmail'],
-    ['nom' => 'Martin', 'prenom' => 'Justine', 'email'=> 'juju289@gmail'],
-];
-
 var_dump($_GET);
 
-$new =  ['nom' => $_GET['nom'], 'prenom' => $_GET['prenom'], 'email'=> $_GET['email']];
-var_dump($new);
-array_push($formulaire, $new);
+$nb1 = $_GET['nb1'];
+$nb2 = $_GET['nb2'];
 
-//1.Afficher tous les noms.//
-$nbElem = sizeof($formulaire);//Je récupère la taille de tableau
-
-$liste = "";
-for($i = 0; $i < $nbElem; $i++) {
-    $liste .="<li>".$formulaire[$i]['nom']."</li>";
-   
+if(($nb1 < 0 && $nb2 < 0) || ($nb1 > 0 && $nb2 > 0)) {
+    $result = "positif";
+} else{
+    $result = "négatif";
 }
 
-var_dump($liste);
-
-//2.Afficher tous les noms des utilisateurs sur le document HTML
 ?>
 
 <!DOCTYPE html>
@@ -38,11 +21,7 @@ var_dump($liste);
 </head>
 <body>
 <h1>Bonjour</h1>
-<p>Voici la liste des utilisateurs:</p>
-<ul>
-   <?= $liste ?>
-</ul>
-<hr>
-<p><img src="img/<?=$image ?>" alt=""></p>
+<p>Le résultat sera <?= $result ?> </p>
+
 </body>
 </html> 
