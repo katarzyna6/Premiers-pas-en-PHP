@@ -1,4 +1,5 @@
 <?php
+
 $image = "copains.jpg";
 
 $formulaire = [
@@ -9,13 +10,19 @@ $formulaire = [
     ['nom' => 'Martin', 'prenom' => 'Justine', 'email'=> 'juju289@gmail'],
 ];
 
+var_dump($_GET);
+
+$new =  ['nom' => $_GET['nom'], 'prenom' => $_GET['prenom'], 'email'=> $_GET['email']];
+var_dump($new);
+array_push($formulaire, $new);
+
 //1.Afficher tous les noms.//
 $nbElem = sizeof($formulaire);//Je récupère la taille de tableau
 
 $liste = "";
 for($i = 0; $i < $nbElem; $i++) {
     $liste .="<li>".$formulaire[$i]['nom']."</li>";
-    echo $formulaire[$i]['nom'] ."<br>";
+   
 }
 
 var_dump($liste);
