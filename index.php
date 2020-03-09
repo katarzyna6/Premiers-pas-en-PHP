@@ -6,9 +6,9 @@ $nb1 = $_GET['nb1'];
 $nb2 = $_GET['nb2'];
 $nb3 = $_GET['nb3'];
 
-if(($nb1 < $nb2 && $nb2 < $nb3)) {
+if($nb1 < $nb2) && ($nb2 < $nb3) {
     $ordre = "croissant";
-} else if(($nb1 > $nb2 && $nb2 > $nb3)){
+} else if($nb1 > $nb2) && ($nb2 > $nb3){
     $ordre = "décroissant";
 } else {
     $ordre = "particulier";
