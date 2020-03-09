@@ -1,16 +1,35 @@
 <?php
 
 var_dump($_GET);
+$age = $_GET['age'];
+$expPermis = $_GET['exp'];
+$nbAccident = $_GET['acc'];
+$anciennete = $_GET['anc'];
 
-$heure = $_GET['heure'];
-$minutes = $_GET['minutes'];
-$minutes = ($minutes + 1)% 60;
+$coeff = -1;
+$tarifs = ["Rouge", "Orange", "Vert", "Bleu"];
+$reponse = "Vous paierez le tarif : ";
 
-if($minutes != 0) {
-    $heure = ($heure + 1) % 24;
-} else {
-    $heure = ($heure + 2)% 24;
+if ($age < 25 && $expPermis < 2) {
+    $coeff = 0;
+    } else if(($age < 25 && $expPermis >= 2) || ($age >= 25 && $expPermis < 2)) {
+        $coeff = 1;
+    } else {
+        $coeff = 2;
+    }
+
+if($anciennete >= 5) {
+    $coeff++;
 }
+
+$coeff -= $nbAccident; 
+
+if($coeff >= 0) {
+    $reponse .= $tarifs[$coeff];
+} else {
+    $reponse = "On ne veux pas de vous, merci, au revoir.";
+}
+
 
 ?>
 
@@ -22,7 +41,7 @@ if($minutes != 0) {
 </head>
 <body>
 <h1>Bonjour</h1>
-<p> <?= $heure ?>h <?= $minutes ?>minutes</p>
+<p><?= $reponse ?></p>
 
 </body>
 </html> 
