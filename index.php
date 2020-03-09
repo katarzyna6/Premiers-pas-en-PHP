@@ -2,16 +2,14 @@
 
 var_dump($_GET);
 
-$nb1 = $_GET['nb1'];
-$nb2 = $_GET['nb2'];
-$nb3 = $_GET['nb3'];
+$heure = $_GET['heure'];
+$minutes = $_GET['minutes'];
+$minutes = ($minutes + 1)% 60;
 
-if($nb1 < $nb2) && ($nb2 < $nb3) {
-    $ordre = "croissant";
-} else if($nb1 > $nb2) && ($nb2 > $nb3){
-    $ordre = "décroissant";
+if($minutes != 0) {
+    $heure = ($heure + 1) % 24;
 } else {
-    $ordre = "particulier";
+    $heure = ($heure + 2)% 24;
 }
 
 ?>
@@ -24,7 +22,7 @@ if($nb1 < $nb2) && ($nb2 < $nb3) {
 </head>
 <body>
 <h1>Bonjour</h1>
-<p>L'ordre sera <?= $ordre ?> </p>
+<p> <?= $heure ?>h <?= $minutes ?>minutes</p>
 
 </body>
 </html> 
