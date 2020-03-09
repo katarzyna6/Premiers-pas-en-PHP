@@ -1,11 +1,26 @@
 <?php
-
-//echo '<h1>Hello World</h1>';
-
-$titre = 'Salut tout le monde!';
-$coucou = 'Wnrfirofnerikfneroinriovnorie';
 $image = "copains.jpg";
 
+$formulaire = [
+    ['nom' => 'Dupont', 'prenom' => 'Jean', 'email'=> 'jdupont@gmail'],
+    ['nom' => 'Dupuis', 'prenom' => 'Loïc', 'email'=> 'loic45000@gmail'],
+    ['nom' => 'Armand', 'prenom' => 'Edgard', 'email'=> 'armand-e@gmail'],
+    ['nom' => 'Durand', 'prenom' => 'Emilie', 'email'=> 'emiliedurand@gmail'],
+    ['nom' => 'Martin', 'prenom' => 'Justine', 'email'=> 'juju289@gmail'],
+];
+
+//1.Afficher tous les noms.//
+$nbElem = sizeof($formulaire);//Je récupère la taille de tableau
+
+$liste = "";
+for($i = 0; $i < $nbElem; $i++) {
+    $liste .="<li>".$formulaire[$i]['nom']."</li>";
+    echo $formulaire[$i]['nom'] ."<br>";
+}
+
+var_dump($liste);
+
+//2.Afficher tous les noms des utilisateurs sur le document HTML
 ?>
 
 <!DOCTYPE html>
@@ -15,10 +30,12 @@ $image = "copains.jpg";
     <title>Premiers pas en PHP</title>
 </head>
 <body>
-
-    <h1><?= $titre ?></h1>
-    <p><?= $coucou ?></p>
-    <p><img src="img/<?=$image ?>" alt=""></p>
-
+<h1>Bonjour</h1>
+<p>Voici la liste des utilisateurs:</p>
+<ul>
+   <?= $liste ?>
+</ul>
+<hr>
+<p><img src="img/<?=$image ?>" alt=""></p>
 </body>
 </html> 
